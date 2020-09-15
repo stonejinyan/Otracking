@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="Export" extends="globalpackage">
+		<action name="Batch" class="com.otracking.action.batch.BatchAction" method="execute">
+			<result name="success">/WEB-INF/jsp/batchmaintain.jsp</result>
+		</action>
+		<action name="GetMOStatusExport" class="com.otracking.action.batch.GetBatchAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+	</package>
+</struts>

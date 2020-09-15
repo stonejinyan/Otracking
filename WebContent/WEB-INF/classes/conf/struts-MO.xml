@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.multipart.maxSize" value="1000000000"/>
+	<package name="MO" extends="globalpackage">
+		<action name="MO" class="com.otracking.action.mo.MOAction" method="execute">
+			<result name="success">/WEB-INF/jsp/momaintain.jsp</result>
+		</action>
+		<action name="SaveMO" class="com.otracking.action.mo.SaveMOAction" method="execute">
+	
+			<result name="success" type="chain">MO</result>
+		</action>
+		<action name="GetMO" class="com.otracking.action.mo.GetMOAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+		<action name="GetMOStatus" class="com.otracking.action.mo.GetMOStatusAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+		<action name="GetMO" class="com.otracking.action.mo.GetMOAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+		<action name="EditMO" class="com.otracking.action.mo.EditMOAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+		<action name="GetMODetailStatus" class="com.otracking.action.mo.GetMODetailStatusAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+		<action name="GetLVSMODetailStatusAction" class="com.otracking.action.mo.GetLVSMODetailStatusAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+	</package>
+</struts>

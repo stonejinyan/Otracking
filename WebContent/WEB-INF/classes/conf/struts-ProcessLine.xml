@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="ProcessLine" extends="globalpackage">
+		<action name="ProcessLine" class="com.otracking.action.processline.ProcessLineAction" method="execute">
+			<result name="success">/WEB-INF/jsp/processlinemaintain.jsp</result>
+		</action>
+		<action name="ProcessLineSave" class="com.otracking.action.processline.ProcessLineSaveAction" method="execute">
+			<result name="success" type="redirectAction">ProcessLine</result>
+		</action>
+		<action name="GetProcessLine" class="com.otracking.action.processline.GetProcessLineAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+		<action name="EditProcess" class="com.otracking.action.processline.EditProcessAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+	</package>
+</struts>

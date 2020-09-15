@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="MethodProcess" extends="globalpackage">
+		<action name="MethodProcess" class="com.otracking.action.methodprocess.MethodProcessAction" method="execute">
+			<result name="success">/WEB-INF/jsp/methodprocessmaintain.jsp</result>
+		</action>
+		<action name="SaveMethodProcess" class="com.otracking.action.methodprocess.SaveMethodProcessAction" method="execute">
+			<result name="success" type="redirectAction">MethodProcess</result>
+		</action>
+		<action name="GetMethodProcess" class="com.otracking.action.methodprocess.GetMethodProcessAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+		<action name="EditMethodProcess" class="com.otracking.action.methodprocess.EditMethodProcessAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+	</package>
+</struts>

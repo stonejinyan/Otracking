@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="Dashboard" extends="globalpackage">
+		<action name="Dashboard" class="com.otracking.action.dashboard.DashboardAction" method="execute">
+			<result name="success">/WEB-INF/jsp/dashboard.jsp</result>
+		</action>
+		<action name="Dashboard_Order" class="com.otracking.action.dashboard.DashboardOrderAction" method="execute">
+			<result name="success">/WEB-INF/jsp/dashboard_order.jsp</result>
+		</action>
+		<action name="Dashboard_Abnormal" class="com.otracking.action.dashboard.DashboardAbnormalAction" method="execute">
+			<result name="success">/WEB-INF/jsp/dashboard_abnormal.jsp</result>
+		</action>
+		<action name="Dashboard_Work_Order" class="com.otracking.action.dashboard.DashboardWorkOrderAction" method="execute">
+			<result name="success">/WEB-INF/jsp/dashboard_work_order.jsp</result>
+		</action>
+		<action name="Dashboard_Output" class="com.otracking.action.dashboard.DashboardOutputAction" method="execute">
+			<result name="success">/WEB-INF/jsp/dashboard_output.jsp</result>
+		</action>
+		<action name="getCurrentInterruption" class="com.otracking.action.dashboard.getCurrentInterruptionAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+		<action name="GetAbnormalTypeCount" class="com.otracking.action.dashboard.GetAbnormalTypeCountAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+		<action name="GetPlanningAction" class="com.otracking.action.dashboard.GetPlanningAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+		<action name="Dashboard_EKitting" class="com.otracking.action.dashboard.DashboardEKittingAction" method="execute">
+			<result name="success">/WEB-INF/jsp/dashboard_ekitting.jsp</result>
+		</action>
+	</package>
+</struts>

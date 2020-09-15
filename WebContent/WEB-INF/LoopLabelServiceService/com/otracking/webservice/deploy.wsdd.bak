@@ -1,0 +1,30 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from LoopLabelServiceService WSDL service -->
+
+  <service name="LoopLabelService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webservice.otracking.com"/>
+      <parameter name="wsdlServiceElement" value="LoopLabelServiceService"/>
+      <parameter name="schemaQualified" value="http://webservice.otracking.com"/>
+      <parameter name="wsdlServicePort" value="LoopLabelService"/>
+      <parameter name="className" value="com.otracking.webservice.LoopLabelServiceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="LoopLabelService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="importBom" qname="operNS:importBom" xmlns:operNS="http://webservice.otracking.com" returnQName="retNS:importBomReturn" xmlns:retNS="http://webservice.otracking.com" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:mo_name" xmlns:pns="http://webservice.otracking.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:authentication" xmlns:pns="http://webservice.otracking.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="importBom"/>
+
+  </service>
+</deployment>

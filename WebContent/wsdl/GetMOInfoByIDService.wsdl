@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservice.otracking.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservice.otracking.com" xmlns:intf="http://webservice.otracking.com" xmlns:tns2="http://bean.webservice.otracking.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservice.otracking.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://bean.webservice.otracking.com"/>
+   <element name="getMOByID">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getMOByIDResponse">
+    <complexType>
+     <sequence>
+      <element name="getMOByIDReturn" type="tns2:MOTable"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://bean.webservice.otracking.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="MO">
+    <sequence>
+     <element name="actual_endtime" nillable="true" type="xsd:dateTime"/>
+     <element name="actual_starttime" nillable="true" type="xsd:dateTime"/>
+     <element name="batch_id" type="xsd:int"/>
+     <element name="customID" nillable="true" type="xsd:string"/>
+     <element name="description" nillable="true" type="xsd:string"/>
+     <element name="dms_id" nillable="true" type="xsd:string"/>
+     <element name="ekitting" type="xsd:int"/>
+     <element name="id" type="xsd:int"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="no" type="xsd:int"/>
+     <element name="product_type_id" type="xsd:int"/>
+     <element name="quantity" type="xsd:double"/>
+     <element name="schedule_endtime" nillable="true" type="xsd:dateTime"/>
+     <element name="schedule_starttime" nillable="true" type="xsd:dateTime"/>
+     <element name="scheduling" type="xsd:int"/>
+     <element name="securityCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="MOTable">
+    <complexContent>
+     <extension base="tns2:MO">
+      <sequence>
+       <element name="SO" nillable="true" type="xsd:string"/>
+       <element name="WBS" nillable="true" type="xsd:string"/>
+       <element name="batch_name" nillable="true" type="xsd:string"/>
+       <element name="order_id" type="xsd:int"/>
+       <element name="order_name" nillable="true" type="xsd:string"/>
+       <element name="processline" nillable="true" type="xsd:string"/>
+       <element name="processline_id" type="xsd:int"/>
+       <element name="product_bigtype_name" nillable="true" type="xsd:string"/>
+       <element name="product_type_name" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getMOByIDResponse">
+
+      <wsdl:part element="impl:getMOByIDResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMOByIDRequest">
+
+      <wsdl:part element="impl:getMOByID" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="GetMOInfoByIDService">
+
+      <wsdl:operation name="getMOByID">
+
+         <wsdl:input message="impl:getMOByIDRequest" name="getMOByIDRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getMOByIDResponse" name="getMOByIDResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="GetMOInfoByIDServiceSoapBinding" type="impl:GetMOInfoByIDService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getMOByID">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getMOByIDRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getMOByIDResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="GetMOInfoByIDServiceService">
+
+      <wsdl:port binding="impl:GetMOInfoByIDServiceSoapBinding" name="GetMOInfoByIDService">
+
+         <wsdlsoap:address location="http://localhost:8080/Otracking/services/GetMOInfoByIDService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

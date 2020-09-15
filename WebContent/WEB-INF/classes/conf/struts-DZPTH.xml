@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="DZP" extends="globalpackage">
+		<action name="SaveDZPInfoByExcel" class="com.otracking.action.dzp.SaveDZPInfoByExcelAction" method="execute">
+			<result name="success" type="redirectAction">OrderDetail?order_id=${order_id}</result>
+		</action>
+		<action name="GetDZPInfoByOrder_id" class="com.otracking.action.dzp.GetDZPInfoByOrder_idAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+		<action name="GetDZPInfoByMO" class="com.otracking.action.dzp.GetDZPInfoByMOAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+	</package>
+</struts>

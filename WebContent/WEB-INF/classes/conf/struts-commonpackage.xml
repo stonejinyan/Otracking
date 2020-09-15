@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="commonpackage" extends="globalpackage">
+		<action name="home" class="com.otracking.action.homeAction"
+			method="execute">
+			<result name="success">/WEB-INF/jsp/home.jsp</result>
+		</action>
+		<action name="QRCode" class="com.otracking.action.QRCodeAction"
+			method="execute">
+			<result name="success">/WEB-INF/jsp/QRCode.jsp</result>
+		</action>
+		<action name="ReSetPasswordViewAction" class="com.otracking.action.ReSetPasswordViewAction"
+			method="execute">
+			<result name="success">/WEB-INF/jsp/resetpassword.jsp</result>
+		</action>
+		<action name="UserLogin" class="com.otracking.action.UserLoginAction"
+			method="execute">
+			<result name="success" type="redirectAction">${prePage}</result> 
+			<result name="home" type="redirectAction">home</result> 
+			<result name="ResetPassword" type="redirectAction">ReSetPasswordViewAction</result> 
+		</action>
+		<action name="WIPProportion" class="com.otracking.action.WIPProportion"
+			method="execute">
+			<result name="success">Json.jsp</result>
+		</action>
+		<action name="PhoneRequest" class="com.otracking.action.PhoneRequestAction"
+			method="execute">
+			<result name="success">Json.jsp</result>
+		</action>
+		<action name="getMaterial" class="com.otracking.action.getMaterialAction"
+			method="execute">
+			<result name="success">Json.jsp</result>
+		</action>
+		<action name="ImportBOMAction" class="com.otracking.action.ImportBOMAction"
+			method="execute">
+			<result name="success">Json.jsp</result>
+		</action>
+		<action name="getOutputAction" class="com.otracking.action.getOutputAction"
+			method="execute">
+			<result name="success">Json.jsp</result>
+		</action>
+		<action name="SaveMonthTarget" class="com.otracking.action.SaveMonthTarget"
+			method="execute">
+			<result name="success">Json.jsp</result>
+		</action>
+		<action name="ReSetPasswordAction" class="com.otracking.action.ReSetPasswordAction"
+			method="execute">
+			<result name="success">/WEB-INF/jsp/resetpassword.jsp</result> 
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://digital.cn/ecc/seee.mes"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://digital.cn/ecc/seee.mes">
+	<xsd:element name="MT_MesMoReport" type="DT_MesMoReport" />
+	<xsd:complexType name="DT_MesMoReport">
+		<xsd:sequence>
+			<xsd:element name="MOrder" minOccurs="0"
+				maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="AUFNR" type="xsd:string" />
+						<xsd:element name="C_MATNR" type="xsd:string" />
+						<xsd:element name="R_MATNR" type="xsd:string" />
+						<xsd:element name="MAKTX" type="xsd:string" />
+						<xsd:element name="MENGE" type="xsd:string" />
+						<xsd:element name="WKSTG" type="xsd:string" />
+						<xsd:element name="RGEKZ" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

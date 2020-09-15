@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="Bulk" extends="globalpackage">
+		<action name="BulkAction" class="com.otracking.action.bulk.BulkAction" method="execute">
+			<result name="success">/WEB-INF/jsp/bulk.jsp</result>
+		</action>
+		<action name="GetBulkAction" class="com.otracking.action.bulk.GetBulkAction"
+			method="execute">
+			<result name="success">Json.jsp</result>
+		</action>
+		<action name="EditBulkAction" class="com.otracking.action.bulk.EditBulkAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+		<action name="GetEdit_Bulk_Log_TableByBulk_IDAction" class="com.otracking.action.bulk.GetEdit_Bulk_Log_TableByBulk_IDAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+		<action name="SaveBulkFile" class="com.otracking.action.bulk.SaveBulkFile"
+			method="execute">
+			<result name="success" type="redirectAction">BulkAction</result> 
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="ProductionExecute" extends="globalpackage">
+		<action name="ProductionExecute" class="com.otracking.action.productionexecute.ProductionExecuteAction" method="execute">
+			<result name="success">/WEB-INF/jsp/productionexecute.jsp</result>
+		</action>
+		<action name="MethodProcessSchedule" class="com.otracking.action.productionexecute.MethodProcessScheduleAction" method="execute">
+			<result name="success">/WEB-INF/jsp/methodprocessschedule.jsp</result>
+		</action>
+		<action name="GetMethodProcessScheduleAction" class="com.otracking.action.productionexecute.GetMethodProcessScheduleAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+		<action name="GetProductionScheduleAction" class="com.otracking.action.productionexecute.GetProductionScheduleAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+		<action name="SearchProductionScheduleAction" class="com.otracking.action.productionexecute.SearchProductionScheduleAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+		<action name="GetProductionScheduleByIDAction" class="com.otracking.action.productionexecute.GetProductionScheduleByIDAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+		<action name="ScheduleMaintenance" class="com.otracking.action.productionexecute.ScheduleMaintenanceAction" method="execute">
+			<result name="success">/WEB-INF/jsp/schedulemaintenance.jsp</result>
+		</action>
+		<action name="RefreshSchedule" class="com.otracking.action.productionexecute.RefreshScheduleAction" method="execute">
+			<result name="success">Json.jsp</result>
+		</action>
+		<action name="Start" class="com.otracking.action.productionexecute.StartAction" method="execute">
+			<result name="success">Json.jsp</result>
+		</action>
+		<action name="End" class="com.otracking.action.productionexecute.EndAction" method="execute">
+			<result name="success">Json.jsp</result>
+		</action>
+		<action name="GetInterruptionType" class="com.otracking.action.productionexecute.GetInterruptionTypeAction" method="execute">
+			<result name="success">Json.jsp</result>
+		</action>
+		<action name="GetInterruptionDepartment" class="com.otracking.action.productionexecute.GetInterruptionDepartmentAction" method="execute">
+			<result name="success">Json.jsp</result>
+		</action>
+		<action name="SaveInterruption" class="com.otracking.action.productionexecute.SaveInterruptionAction" method="execute">
+			<result name="success">Json.jsp</result>
+		</action>
+		<action name="UpdateInterruption" class="com.otracking.action.productionexecute.UpdateInterruptionAction" method="execute">
+			<result name="success">Json.jsp</result>
+		</action>
+		<action name="FindInterruptionAndRecover" class="com.otracking.action.productionexecute.FindInterruptionAndRecoverAction" method="execute">
+			<result name="success">Json.jsp</result>
+		</action>
+		<action name="GetOTR" class="com.otracking.action.productionexecute.GetOTRAction" method="execute">
+			<result name="success">Json.jsp</result>
+		</action>
+		<action name="MethodProductionExecute" class="com.otracking.action.productionexecute.MethodProductionExecuteAction" method="execute">
+			<result name="success">/WEB-INF/jsp/methodproductionexecute.jsp</result>
+		</action>
+		<action name="sentSecurityCode" class="com.otracking.action.productionexecute.SentSecurityCodeAction" method="execute">
+			<result name="success">Json.jsp</result>
+		</action>
+		<action name="GetMaterial" class="com.otracking.action.productionexecute.GetMaterialAction" method="execute">
+			<result name="success">Json.jsp</result>
+		</action>
+		<action name="EditInterruption_recover" class="com.otracking.action.productionexecute.EditInterruption_recoverAction" method="execute">
+			<result name="success">Json.jsp</result>
+		</action>
+		<action name="FindInterruptionAndRecoverByMOAction" class="com.otracking.action.productionexecute.FindInterruptionAndRecoverByMOAction" method="execute">
+			<result name="success">Json.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="Order" extends="globalpackage">
+		<action name="Order" class="com.otracking.action.order.OrderAction" method="execute">
+			<result name="success">/WEB-INF/jsp/ordermaintain.jsp</result>
+		</action>
+		<action name="OrderDetail" class="com.otracking.action.order.OrderDetailAction" method="execute">
+			<result name="success">/WEB-INF/jsp/orderdetail.jsp</result>
+		</action>
+		<action name="SaveOrder" class="com.otracking.action.order.SaveOrderAction" method="execute">
+			<result name="success" type="redirectAction">Order</result>
+		</action>
+		<action name="GetOrder" class="com.otracking.action.order.GetOrderAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+		<action name="EditOrder" class="com.otracking.action.order.EditOrderAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+		<action name="GetOrderByIDAction" class="com.otracking.action.order.GetOrderByIDAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+	</package>
+</struts>

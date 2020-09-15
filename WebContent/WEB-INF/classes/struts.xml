@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	 <!-- 设置浏览器是否缓存静态内容，默认值为true，在我们开发阶段建议关闭，防止修改后测试不到 -->
+    <constant name="struts.serve.static.browserCache" value="false"></constant>
+    <!-- 当struts 配置文件修改后，系统是否自动重新加载该文件，默认为false -->
+    <constant name="struts.configuration.xml.reload" value="true"></constant>
+    <!-- 开发模式下使用，这样可以打印出更加详细的错误信息 -->
+    <constant name="struts.devMode" value="false"></constant>
+	<constant name="struts.enable.DynamicMethodInvocation"
+		value="true" />
+	<constant name="struts.multipart.saveDir" value="/tmp"/>
+	<package name="globalpackage" extends="struts-default">
+		<interceptors>
+			<interceptor name="loginInterceptor"
+				class="com.otracking.tool.AuthorizationInterceptor"></interceptor>
+			<interceptor-stack name="loginDefaultStack">
+				<interceptor-ref name="loginInterceptor">
+					<param name="ignoreActions">UserLogin,PhoneRequest,Start,End,GetOTR,sentSecurityCode,getOutputAction</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref
+			name="loginDefaultStack"></default-interceptor-ref>
+		<global-results>
+			<result name="login" type="redirect">/login.jsp</result>
+            <result name="invalid.token" type="redirect">/error.jsp</result>
+		</global-results>
+	</package>
+	<include file="conf/struts-commonpackage.xml"></include>
+	<include file="conf/struts-ProcessLine.xml"></include>
+	<include file="conf/struts-MethodProcess.xml"></include>
+	<include file="conf/struts-WorkStation.xml"></include>
+	<include file="conf/struts-BigType.xml"></include>
+	<include file="conf/struts-SmallType.xml"></include>
+	<include file="conf/struts-KeyComponents.xml"></include>
+	<include file="conf/struts-Order.xml"></include>
+	<include file="conf/struts-Batch.xml"></include>
+	<include file="conf/struts-MO.xml"></include>
+	<include file="conf/struts-Routing.xml"></include>
+	<include file="conf/struts-ProductionExecute.xml"></include>
+	<include file="conf/struts-Dashboard.xml"></include>
+	<include file="conf/struts-OrderTechnicalInfo.xml"></include>
+	<include file="conf/struts-staff.xml"></include>
+	<include file="conf/struts-DZPTH.xml"></include>
+	<include file="conf/struts-MaterialPull.xml"></include>
+	<include file="conf/struts-Bulk.xml"></include>
+</struts>

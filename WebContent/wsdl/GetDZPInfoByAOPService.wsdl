@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservice.otracking.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservice.otracking.com" xmlns:intf="http://webservice.otracking.com" xmlns:tns1="http://bean.otracking.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservice.otracking.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://bean.otracking.com"/>
+   <element name="GetDZPInfoByAOP">
+    <complexType>
+     <sequence>
+      <element name="dms_id" type="xsd:string"/>
+      <element name="order_id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetDZPInfoByAOPResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="GetDZPInfoByAOPReturn" type="tns1:DZPTH"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://bean.otracking.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="DZPTH">
+    <sequence>
+     <element name="description" nillable="true" type="xsd:string"/>
+     <element name="dms_id" nillable="true" type="xsd:string"/>
+     <element name="headingline" nillable="true" type="xsd:string"/>
+     <element name="order_id" type="xsd:int"/>
+     <element name="sequence" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="GetDZPInfoByAOPResponse">
+
+      <wsdl:part element="impl:GetDZPInfoByAOPResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetDZPInfoByAOPRequest">
+
+      <wsdl:part element="impl:GetDZPInfoByAOP" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="GetDZPInfoByAOPService">
+
+      <wsdl:operation name="GetDZPInfoByAOP">
+
+         <wsdl:input message="impl:GetDZPInfoByAOPRequest" name="GetDZPInfoByAOPRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetDZPInfoByAOPResponse" name="GetDZPInfoByAOPResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="GetDZPInfoByAOPServiceSoapBinding" type="impl:GetDZPInfoByAOPService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="GetDZPInfoByAOP">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetDZPInfoByAOPRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetDZPInfoByAOPResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="GetDZPInfoByAOPServiceService">
+
+      <wsdl:port binding="impl:GetDZPInfoByAOPServiceSoapBinding" name="GetDZPInfoByAOPService">
+
+         <wsdlsoap:address location="http://localhost:8080/Otracking/services/GetDZPInfoByAOPService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

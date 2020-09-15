@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservice.otracking.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservice.otracking.com" xmlns:intf="http://webservice.otracking.com" xmlns:tns1="http://bean.otracking.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservice.otracking.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://bean.otracking.com"/>
+   <element name="importBom">
+    <complexType>
+     <sequence>
+      <element name="material_MO" type="tns1:Material_MO"/>
+      <element name="authentication" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_tns1_Material">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:Material"/>
+    </sequence>
+   </complexType>
+   <element name="importBomResponse">
+    <complexType>
+     <sequence>
+      <element name="importBomReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://bean.otracking.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://webservice.otracking.com"/>
+   <complexType name="Material">
+    <sequence>
+     <element name="MAKTX" nillable="true" type="xsd:string"/>
+     <element name="MENGE" type="xsd:double"/>
+     <element name="RGEKZ" nillable="true" type="xsd:string"/>
+     <element name="WKSTG" nillable="true" type="xsd:string"/>
+     <element name="r_MATNR" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Material_MO">
+    <sequence>
+     <element name="AUFNR" nillable="true" type="xsd:string"/>
+     <element name="c_MATNR" nillable="true" type="xsd:string"/>
+     <element name="materials" nillable="true" type="impl:ArrayOf_tns1_Material"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="importBomRequest">
+
+      <wsdl:part element="impl:importBom" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="importBomResponse">
+
+      <wsdl:part element="impl:importBomResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="BomService">
+
+      <wsdl:operation name="importBom">
+
+         <wsdl:input message="impl:importBomRequest" name="importBomRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:importBomResponse" name="importBomResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="BomServiceSoapBinding" type="impl:BomService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="importBom">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="importBomRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="importBomResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="BomServiceService">
+
+      <wsdl:port binding="impl:BomServiceSoapBinding" name="BomService">
+
+         <wsdlsoap:address location="http://localhost:8080/Otracking/services/BomService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

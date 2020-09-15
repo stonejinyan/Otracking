@@ -1,0 +1,27 @@
+{
+	"order_number": "125035226",
+	"serial_number": "AODX006180",
+	"materials": [
+		{
+			"material_number": "LV429515-NPP-R",
+			"material_desc": "Blue Cord End Terminals 1.0-14",
+			"quantity": 1.0,
+			"workstation": " A13170",
+			"attribute": "CCKB"
+		},
+		{
+			"material_number": "LV429516-NPP-R",
+			"material_desc": "Blue Cord End Terminals 2.0-14",
+			"quantity": 1.5,
+			"workstation": " A13180",
+			"attribute": "KB"
+		},
+		{
+			"material_number": "LV429517-NPP-R",
+			"material_desc": "Blue Cord End Terminals 2.5-14",
+			"quantity": 3.0,
+			"workstation": " A13190",
+			"attribute": "PICK"
+		}
+	]
+}

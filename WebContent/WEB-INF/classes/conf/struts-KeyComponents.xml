@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="KeyComponents" extends="globalpackage">
+		<action name="KeyComponents" class="com.otracking.action.keycomponents.KeyComponentsAction" method="execute">
+			<result name="success">/WEB-INF/jsp/keycomponentsmaintain.jsp</result>
+		</action>
+		<action name="SaveKeyComponents" class="com.otracking.action.keycomponents.SaveKeyComponentsAction" method="execute">
+			<result name="success" type="redirectAction">KeyComponents</result>
+		</action>
+		<action name="GetKeyComponents" class="com.otracking.action.keycomponents.GetKeyComponentsAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+		<action name="EditKeyComponents" class="com.otracking.action.keycomponents.EditKeyComponentsAction"
+			method="execute">
+			<result name="success">Json.jsp</result> 
+		</action>
+	</package>
+</struts>

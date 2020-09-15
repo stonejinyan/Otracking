@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from GetPMInfoBySOServiceService WSDL service -->
+
+  <service name="GetPMInfoBySOService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webservice.otracking.com"/>
+      <parameter name="wsdlServiceElement" value="GetPMInfoBySOServiceService"/>
+      <parameter name="schemaQualified" value="http://webservice.otracking.com"/>
+      <parameter name="wsdlServicePort" value="GetPMInfoBySOService"/>
+      <parameter name="className" value="com.otracking.webservice.GetPMInfoBySOService"/>
+      <parameter name="wsdlPortType" value="GetPMInfoBySOService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://webservice.otracking.com" xmlns:retNS="http://webservice.otracking.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getPMInfoBySO" qname="operNS:getPMInfoBySO" returnQName="retNS:getPMInfoBySOReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://webservice.otracking.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:so" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="getPMInfoBySO"/>
+
+  </service>
+</deployment>
