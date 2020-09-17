@@ -31,6 +31,14 @@ public class MaterialPull {
 	private int material_id;
 	private double quantity;
 
+	public double getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(double quantity) {
+		this.quantity = quantity;
+	}
+
 	public int getMaterial_id() {
 		return material_id;
 	}

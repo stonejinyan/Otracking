@@ -29,6 +29,7 @@ public class EndAction extends ActionSupport {
 	public String execute() throws Exception {
 		if (staff == null) {
 			staff = new Staff();
+			staff.setName("手机扫码");
 		}
 		// 获取提交的工单
 		Production_Schedule production_Schedule = production_ScheduleDao.findById(id);

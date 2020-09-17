@@ -256,7 +256,18 @@
 			{
 				field : 'actual_endtime',
 				title : '结束生产时间',
-				editable : true,
+				align : 'center',
+				valign : 'middle'
+			}, 
+			{
+				field : 'package_time',
+				title : '包装时间',
+				align : 'center',
+				valign : 'middle'
+			}, 
+			{
+				field : 'delivery_time',
+				title : '装车时间',
 				align : 'center',
 				valign : 'middle'
 			}, 

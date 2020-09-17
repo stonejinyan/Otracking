@@ -33,4 +33,9 @@ public class WIPService {
 	public double getTotalWIP() {
 		return wipDao.getWIPTotal();
 	}
+
+	public double getPackageWIP() {
+		// TODO Auto-generated method stub
+		return wipDao.getPackageWIP();
+	}
 }

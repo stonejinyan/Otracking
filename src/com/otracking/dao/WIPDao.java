@@ -28,4 +28,9 @@ public class WIPDao extends IBaseDao<WIP> {
 		String sql = "select count(*) from production_schedule where flag = 3";
 		return super.queryForCount(sql);
 	}
+
+	public double getPackageWIP() {
+		String sql = "select count(*) from mo where actual_endtime is not null and package_time is null";
+		return super.queryForCount(sql);
+	}
 }

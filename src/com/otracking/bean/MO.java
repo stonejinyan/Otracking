@@ -20,6 +20,33 @@ public class MO {
 	private String description;
 	private String customID;
 	private int ekitting;
+	private Date fat_datetime;
+	private Date package_time;
+	private Date delivery_time;
+
+	public Date getFat_datetime() {
+		return fat_datetime;
+	}
+
+	public void setFat_datetime(Date fat_datetime) {
+		this.fat_datetime = fat_datetime;
+	}
+
+	public Date getPackage_time() {
+		return package_time;
+	}
+
+	public void setPackage_time(Date package_time) {
+		this.package_time = package_time;
+	}
+
+	public Date getDelivery_time() {
+		return delivery_time;
+	}
+
+	public void setDelivery_time(Date delivery_time) {
+		this.delivery_time = delivery_time;
+	}
 
 	public int getEkitting() {
 		return ekitting;

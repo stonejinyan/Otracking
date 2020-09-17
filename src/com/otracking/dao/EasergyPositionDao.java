@@ -21,7 +21,8 @@ public class EasergyPositionDao extends IBaseDao<EasergyPosition> {
 	}
 
 	public List<EasergyPosition> getAll() {
-		return super.getAll(tableName);
+		String sql = "select * from easergy where active = 1";
+		return super.queryForMultiple(sql);
 	}
 
 }

@@ -163,8 +163,8 @@
 								<li><a href="Dashboard_Output">计划与产出看板</a></li>
 								<li><a href="Dashboard_Abnormal">异常看板</a></li>
 								<li><a href="Dashboard_EKitting">EKitting</a></li>
-								<!-- <li><a href="DashboardEasergyAction">温控数据下载</a></li>
-								<li><a href="FG">产出/WIP统计</a></li>
+								<li><a href="DashboardEasergyAction">温控数据下载</a></li>
+								<!-- <li><a href="FG">产出/WIP统计</a></li>
 								<li><a href="Abnormal">异常看板</a></li>
 								<li><a href="PLT">PLT</a></li>
 								<li role="separator" class="divider"></li> -->

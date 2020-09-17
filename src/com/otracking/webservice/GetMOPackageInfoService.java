@@ -10,6 +10,7 @@ import com.otracking.bean.DatabaseMaterial;
 import com.otracking.bean.MOPackageInfo;
 import com.otracking.bean.MOTable;
 import com.otracking.dao.DatabaseMaterialDao;
+import com.otracking.dao.MODao;
 import com.otracking.dao.MOTableDao;
 import com.otracking.tool.LogUtil;
 
@@ -21,6 +22,7 @@ public class GetMOPackageInfoService {
 
 	Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 	DatabaseMaterialDao databaseMaterialDao = new DatabaseMaterialDao();
+	MODao moDao = new MODao();
 
 	public String getZXDInfoByMO(String mo) {
 		LogUtil.RollingFile.info("接收请求(MO:" + mo + ")");
@@ -49,7 +51,7 @@ public class GetMOPackageInfoService {
 				for (int i = 0; i < databaseMaterial.size(); i++) {
 					String materialNO = databaseMaterial.get(i).getR_MATNR();
 					String packageDescription = databaseMaterial.get(i).getMAKTX();
-					LogUtil.RollingFile.info("包装信息：" + packageDescription);
+					// LogUtil.RollingFile.info("包装信息：" + packageDescription);
 					if (materialNO.startsWith("OK9") && !packageDescription.contains("MT")) {
 						package_info = packageDescription;
 						LogUtil.RollingFile.info("设置包装信息：" + packageDescription);
@@ -57,8 +59,9 @@ public class GetMOPackageInfoService {
 				}
 			}
 			String error = "200";
-			moPackageInfo = new MOPackageInfo(no, sale_order, order_name, wbs, mo_name, customer_id, dms_id, model,
-			        type, request_quantity, unit, delivery_quantity, net_weight, gross_weight, package_info, error);
+			moPackageInfo = new MOPackageInfo(no, sale_order, order_name + wbs, wbs, mo_name, customer_id, dms_id,
+			        model, type, request_quantity, unit, delivery_quantity, net_weight, gross_weight, package_info,
+			        error);
 		} else {
 			moPackageInfo = new MOPackageInfo();
 			moPackageInfo.setError("MO不存在，请确认条码信息！");
@@ -67,6 +70,7 @@ public class GetMOPackageInfoService {
 		LogUtil.RollingFile.info(moPackageInfo);
 		LogUtil.RollingFile.info("返回数据(MO:" + mo + ")");
 		System.out.println(gson.toJson(new MOPackageInfo[] { moPackageInfo }));
+		moDao.updatePackageTime(mo);
 		return gson.toJson(new MOPackageInfo[] { moPackageInfo });
 	}
 

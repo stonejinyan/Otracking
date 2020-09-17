@@ -43,6 +43,18 @@ public class MODao extends IBaseDao<MO> {
 		return super.findById(mo_id, tableName);
 	}
 
+	public int updatePackageTime(String name) {
+		// TODO Auto-generated method stub
+		String sql = "update " + tableName + " set package_time = now() where name = ?";
+		return super.update(sql, name);
+	}
+
+	public int updateDeliveryTime(String name) {
+		// TODO Auto-generated method stub
+		String sql = "update " + tableName + " set delivery_time = now() where dms_id = ?";
+		return super.update(sql, name);
+	}
+
 	public int updateScheduling(MO mo) {
 		// TODO Auto-generated method stub
 		String sql = "update " + tableName + " set scheduling = 1 where id = ?";

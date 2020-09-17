@@ -13,7 +13,7 @@ public class DashboardAction extends ActionSupport {
 		ActionContext.getContext().put("WIPFlag1", wipService.getWIPFlag1());
 		ActionContext.getContext().put("WIPFlag2", wipService.getWIPFlag2());
 		ActionContext.getContext().put("WIPFlag3", wipService.getWIPFlag3());
-		ActionContext.getContext().put("TotalWIP", wipService.getTotalWIP());
+		ActionContext.getContext().put("PackageWIP", (int) wipService.getPackageWIP());
 		ActionContext.getContext().put("TotalWIP", (int) wipService.getTotalWIP());
 		ActionContext.getContext().put("active", "dashboard");
 		return "success";

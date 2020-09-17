@@ -1065,7 +1065,7 @@
 
 		var wipbarChartData = {
 				labels: ['70预组','115预组','非标预组','70机械','70配线',
-					'115机械','115配线','Blokset机械','Blokset配线','核电机械','核电配线','非标机械','非标配线','PLC机械','PLC配线','弹性线机械','弹性线配线', 'FQC', '最终装配'],
+					'115机械','115配线','Blokset机械','Blokset配线','核电机械','核电配线','非标机械','非标配线','PLC机械','PLC配线','弹性线机械','弹性线配线', 'FQC', '最终装配','成品包装'],
 				datasets: [{
 					label: '可开工',
 					backgroundColor: 'rgba(78,121,167,0.8)',
@@ -1090,7 +1090,7 @@
 						${WIPFlag1[16]},
 						${WIPFlag1[17]},
 						${WIPFlag1[18]},
-						${WIPFlag1[19]}
+						${WIPFlag1[19]}${PackageWIP}
 					]
 				}, {
 					label: '生产中',
@@ -1116,7 +1116,7 @@
 						${WIPFlag2[16]},
 						${WIPFlag2[17]},
 						${WIPFlag2[18]},
-						${WIPFlag2[19]}
+						${WIPFlag2[19]}0
 					]
 				}, {
 					label: '异常',
@@ -1142,7 +1142,7 @@
 						${WIPFlag3[16]},
 						${WIPFlag3[17]},
 						${WIPFlag3[18]},
-						${WIPFlag3[19]}
+						${WIPFlag3[19]}0
 					]
 				}]
 
