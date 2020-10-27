@@ -1281,7 +1281,7 @@
 			});
 		}
 		 function projectDocument(){
-			var str="http://10.177.118.249:8096/Projectdocument/html/EProjectdocument.html?projectname=${Project.name}";
+			var str="http://10.177.118.249:8096/Projectdocument/html/EProjectdocument.html?action=${MO.order_name}";
 			window.open(str);
 		}
     </script>

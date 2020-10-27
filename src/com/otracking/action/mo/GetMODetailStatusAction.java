@@ -81,6 +81,7 @@ public class GetMODetailStatusAction extends ActionSupport {
 			moStatus.setFAT(checkStatus(
 			        production_ScheduleDao.getProduction_ScheduleByMOAndMethod_Process_Type(moTable.getId(), 8)));
 			moStatuss.add(moStatus);
+			moStatus.setFat_datetime(moTable.getFat_datetime());
 		}
 		/*
 		 * serverPagination.setRow(batchStatuss); serverPagination.setTotal(6);

@@ -9,7 +9,7 @@ import com.otracking.bean.MO;
 import com.otracking.bean.Method_Process;
 import com.otracking.bean.Production_Schedule;
 import com.otracking.dao.BatchDao;
-import com.otracking.dao.MODao;
+import com.otracking.dao.MOTableDao;
 import com.otracking.dao.Method_ProcessDao;
 import com.otracking.dao.ProcessLineDao;
 import com.otracking.dao.Product_TypeDao;
@@ -28,7 +28,7 @@ public class MethodProductionExecuteAction extends ActionSupport {
 	RoutingDao routingDao = new RoutingDao();
 	Product_TypeDao product_TypeDao = new Product_TypeDao();
 	Production_ScheduleTableDao production_ScheduleTableDao = new Production_ScheduleTableDao();
-	MODao moDao = new MODao();
+	MOTableDao moTableDao = new MOTableDao();
 	BatchDao batchDao = new BatchDao();
 
 	public String execute() throws Exception {
@@ -50,7 +50,7 @@ public class MethodProductionExecuteAction extends ActionSupport {
 		ActionContext.getContext().put("active", "ProductionExecute");
 		ActionContext.getContext().put("production_Schedule", production_Schedule);
 		ActionContext.getContext().put("OTR", production_ScheduleDao.getOTR(id));
-		MO mo = moDao.findById(production_Schedule.getMo_id());
+		MO mo = moTableDao.getByID(production_Schedule.getMo_id());
 		Batch batch = batchDao.findById(mo.getBatch_id());
 		ActionContext.getContext().put("MO", mo);
 		ActionContext.getContext().put("Batch", batch);

@@ -28,6 +28,15 @@ public class MOStatus {
 	private String dms_id;
 	private String processline;
 	private double quantity;
+	private Date fat_datetime;
+
+	public Date getFat_datetime() {
+		return fat_datetime;
+	}
+
+	public void setFat_datetime(Date fat_datetime) {
+		this.fat_datetime = fat_datetime;
+	}
 
 	public double getQuantity() {
 		return quantity;

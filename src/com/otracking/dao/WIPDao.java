@@ -30,7 +30,12 @@ public class WIPDao extends IBaseDao<WIP> {
 	}
 
 	public double getPackageWIP() {
-		String sql = "select count(*) from mo where actual_endtime is not null and package_time is null";
+		String sql = "SELECT\r\n" + "COUNT(*)\r\n" + "FROM\r\n" + "mo\r\n"
+		        + "INNER JOIN product_type ON mo.product_type_id = product_type.id\r\n"
+		        + "INNER JOIN product_model ON product_type.bigtype_id = product_model.id\r\n"
+		        + "INNER JOIN product_classify ON product_model.product_classify_id = product_classify.id\r\n"
+		        + "WHERE\r\n" + "product_classify_id in (1,2) AND\r\n" + "mo.actual_endtime IS NOT null AND\r\n"
+		        + "mo.package_time IS null";
 		return super.queryForCount(sql);
 	}
 }

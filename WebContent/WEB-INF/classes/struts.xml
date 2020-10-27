@@ -19,7 +19,7 @@
 				class="com.otracking.tool.AuthorizationInterceptor"></interceptor>
 			<interceptor-stack name="loginDefaultStack">
 				<interceptor-ref name="loginInterceptor">
-					<param name="ignoreActions">UserLogin,PhoneRequest,Start,End,GetOTR,sentSecurityCode,getOutputAction</param>
+					<param name="ignoreActions">UserLogin,PhoneRequest,Start,End,GetOTR,sentSecurityCode,getOutputAction,SentEasergyCodeAction</param>
 				</interceptor-ref>
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 			</interceptor-stack>
