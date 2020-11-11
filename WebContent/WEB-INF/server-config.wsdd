@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -33,9 +33,9 @@
   <ns1:parameter name="className" value="com.otracking.webservice.BomService"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="allowedMethods" value="importBom"/>
-  <ns1:parameter name="wsdlTargetNamespace" value="http://webservice.otracking.com"/>
-  <ns1:parameter name="wsdlServiceElement" value="BomServiceService"/>
   <ns1:parameter name="wsdlPortType" value="BomService"/>
+  <ns1:parameter name="wsdlServiceElement" value="BomServiceService"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://webservice.otracking.com"/>
   <ns1:parameter name="sendXsiTypes" value="false"/>
   <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns3:Material_MO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.otracking.bean.Material_MO" xmlns:ns3="http://bean.otracking.com"/>
   <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns4:Material" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.otracking.bean.Material" xmlns:ns4="http://bean.otracking.com"/>
@@ -47,16 +47,33 @@
   <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
   <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
  </ns1:service>
+ <ns1:service name="BJXBomService" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="importBJXBom" qname="ns7:importBJXBom" returnQName="ns7:importBJXBomReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://webservice.otracking.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:bjxBom" type="ns8:BJXBom" xmlns:ns8="http://bean.webservice.otracking.com"/>
+   <ns1:parameter qname="ns7:authentication" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="importBJXBom"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="BJXBomService"/>
+  <ns1:parameter name="className" value="com.otracking.webservice.BJXBomService"/>
+  <ns1:parameter name="wsdlServicePort" value="BJXBomService"/>
+  <ns1:parameter name="schemaQualified" value="http://bean.webservice.otracking.com,http://webservice.otracking.com"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://webservice.otracking.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="BJXBomServiceService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns9:BJXBom_Material" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.otracking.webservice.bean.BJXBom_Material" xmlns:ns9="http://bean.webservice.otracking.com"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns10:BJXBom" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.otracking.webservice.bean.BJXBom" xmlns:ns10="http://bean.webservice.otracking.com"/>
+  <ns1:arrayMapping innerType="ns12:BJXBom_Material" languageSpecificType="java:com.otracking.webservice.bean.BJXBom_Material[]" qname="ns11:ArrayOf_tns2_BJXBom_Material" xmlns:ns11="http://webservice.otracking.com" xmlns:ns12="http://bean.webservice.otracking.com"/>
+ </ns1:service>
  <ns1:service name="ShipMOService" provider="java:RPC" style="wrapped" use="literal">
-  <ns1:operation name="ship" qname="ns7:ship" returnQName="ns7:shipReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://webservice.otracking.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns7:mo" type="xsd:string"/>
+  <ns1:operation name="ship" qname="ns13:ship" returnQName="ns13:shipReturn" returnType="xsd:string" soapAction="" xmlns:ns13="http://webservice.otracking.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns13:mo" type="xsd:string"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="ship"/>
-  <ns1:parameter name="wsdlPortType" value="ShipMOService"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
-  <ns1:parameter name="schemaQualified" value="http://webservice.otracking.com"/>
-  <ns1:parameter name="wsdlServicePort" value="ShipMOService"/>
+  <ns1:parameter name="wsdlPortType" value="ShipMOService"/>
   <ns1:parameter name="className" value="com.otracking.webservice.ShipMOService"/>
+  <ns1:parameter name="wsdlServicePort" value="ShipMOService"/>
+  <ns1:parameter name="schemaQualified" value="http://webservice.otracking.com"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://webservice.otracking.com"/>
   <ns1:parameter name="wsdlServiceElement" value="ShipMOServiceService"/>
  </ns1:service>
@@ -65,51 +82,51 @@
   <ns1:parameter name="className" value="org.apache.axis.Version"/>
  </ns1:service>
  <ns1:service name="GetEasergyPositionListService" provider="java:RPC" style="wrapped" use="literal">
-  <ns1:operation name="getEasergyPositionList" qname="ns8:getEasergyPositionList" returnQName="ns8:getEasergyPositionListReturn" returnType="ns9:EasergyPosition" soapAction="" xmlns:ns8="http://webservice.otracking.com" xmlns:ns9="http://bean.otracking.com">
-   <ns1:parameter qname="ns8:easergyPosition" type="ns9:EasergyPosition"/>
+  <ns1:operation name="getEasergyPositionList" qname="ns14:getEasergyPositionList" returnQName="ns14:getEasergyPositionListReturn" returnType="ns15:EasergyPosition" soapAction="" xmlns:ns14="http://webservice.otracking.com" xmlns:ns15="http://bean.otracking.com">
+   <ns1:parameter qname="ns14:easergyPosition" type="ns15:EasergyPosition"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="getEasergyPositionList"/>
-  <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="GetEasergyPositionListService"/>
-  <ns1:parameter name="className" value="com.otracking.webservice.GetEasergyPositionListService"/>
-  <ns1:parameter name="wsdlServicePort" value="GetEasergyPositionListService"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="schemaQualified" value="http://bean.otracking.com,http://webservice.otracking.com"/>
+  <ns1:parameter name="wsdlServicePort" value="GetEasergyPositionListService"/>
+  <ns1:parameter name="className" value="com.otracking.webservice.GetEasergyPositionListService"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://webservice.otracking.com"/>
   <ns1:parameter name="wsdlServiceElement" value="GetEasergyPositionListServiceService"/>
-  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns10:EasergyPosition" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.otracking.bean.EasergyPosition" xmlns:ns10="http://bean.otracking.com"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns16:EasergyPosition" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.otracking.bean.EasergyPosition" xmlns:ns16="http://bean.otracking.com"/>
  </ns1:service>
  <ns1:service name="GetPMInfoBySOService" provider="java:RPC" style="wrapped" use="literal">
-  <ns1:operation name="getPMInfoBySO" qname="ns11:getPMInfoBySO" returnQName="ns11:getPMInfoBySOReturn" returnType="xsd:string" soapAction="" xmlns:ns11="http://webservice.otracking.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns11:so" type="xsd:string"/>
+  <ns1:operation name="getPMInfoBySO" qname="ns17:getPMInfoBySO" returnQName="ns17:getPMInfoBySOReturn" returnType="xsd:string" soapAction="" xmlns:ns17="http://webservice.otracking.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns17:so" type="xsd:string"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="getPMInfoBySO"/>
-  <ns1:parameter name="wsdlPortType" value="GetPMInfoBySOService"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
-  <ns1:parameter name="schemaQualified" value="http://webservice.otracking.com"/>
-  <ns1:parameter name="wsdlServicePort" value="GetPMInfoBySOService"/>
+  <ns1:parameter name="wsdlPortType" value="GetPMInfoBySOService"/>
   <ns1:parameter name="className" value="com.otracking.webservice.GetPMInfoBySOService"/>
+  <ns1:parameter name="wsdlServicePort" value="GetPMInfoBySOService"/>
+  <ns1:parameter name="schemaQualified" value="http://webservice.otracking.com"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://webservice.otracking.com"/>
   <ns1:parameter name="wsdlServiceElement" value="GetPMInfoBySOServiceService"/>
  </ns1:service>
  <ns1:service name="GetMOInfoByIDService" provider="java:RPC" style="wrapped" use="literal">
-  <ns1:operation name="getMOByID" qname="ns12:getMOByID" returnQName="ns12:getMOByIDReturn" returnType="ns13:MOTable" soapAction="" xmlns:ns12="http://webservice.otracking.com" xmlns:ns13="http://bean.webservice.otracking.com">
-   <ns1:parameter qname="ns12:id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="getMOByID" qname="ns18:getMOByID" returnQName="ns18:getMOByIDReturn" returnType="ns19:MOTable" soapAction="" xmlns:ns18="http://webservice.otracking.com" xmlns:ns19="http://bean.webservice.otracking.com">
+   <ns1:parameter qname="ns18:id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="getMOByID"/>
-  <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="GetMOInfoByIDService"/>
-  <ns1:parameter name="className" value="com.otracking.webservice.GetMOInfoByIDService"/>
-  <ns1:parameter name="wsdlServicePort" value="GetMOInfoByIDService"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="schemaQualified" value="http://bean.webservice.otracking.com,http://webservice.otracking.com"/>
+  <ns1:parameter name="wsdlServicePort" value="GetMOInfoByIDService"/>
+  <ns1:parameter name="className" value="com.otracking.webservice.GetMOInfoByIDService"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://webservice.otracking.com"/>
   <ns1:parameter name="wsdlServiceElement" value="GetMOInfoByIDServiceService"/>
-  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns14:MOTable" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.otracking.webservice.bean.MOTable" xmlns:ns14="http://bean.webservice.otracking.com"/>
-  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns15:MO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.otracking.webservice.bean.MO" xmlns:ns15="http://bean.webservice.otracking.com"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns20:MOTable" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.otracking.webservice.bean.MOTable" xmlns:ns20="http://bean.webservice.otracking.com"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns21:MO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.otracking.webservice.bean.MO" xmlns:ns21="http://bean.webservice.otracking.com"/>
  </ns1:service>
  <ns1:service name="GetDZPInfoByAOPService" provider="java:RPC" style="wrapped" use="literal">
-  <ns1:operation name="getDZPInfoByAOP" qname="ns16:GetDZPInfoByAOP" returnQName="ns16:GetDZPInfoByAOPReturn" returnType="ns17:DZPTH" soapAction="" xmlns:ns16="http://webservice.otracking.com" xmlns:ns17="http://bean.otracking.com">
-   <ns1:parameter qname="ns16:dms_id" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-   <ns1:parameter qname="ns16:order_id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="getDZPInfoByAOP" qname="ns22:GetDZPInfoByAOP" returnQName="ns22:GetDZPInfoByAOPReturn" returnType="ns23:DZPTH" soapAction="" xmlns:ns22="http://webservice.otracking.com" xmlns:ns23="http://bean.otracking.com">
+   <ns1:parameter qname="ns22:dms_id" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns22:order_id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   </ns1:operation>
   <ns1:parameter name="sendMultiRefs" value="false"/>
   <ns1:parameter name="wsdlServicePort" value="GetDZPInfoByAOPService"/>
@@ -117,29 +134,29 @@
   <ns1:parameter name="className" value="com.otracking.webservice.GetDZPInfoByAOPService"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="allowedMethods" value="getDZPInfoByAOP"/>
-  <ns1:parameter name="wsdlTargetNamespace" value="http://webservice.otracking.com"/>
-  <ns1:parameter name="wsdlServiceElement" value="GetDZPInfoByAOPServiceService"/>
   <ns1:parameter name="wsdlPortType" value="GetDZPInfoByAOPService"/>
+  <ns1:parameter name="wsdlServiceElement" value="GetDZPInfoByAOPServiceService"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://webservice.otracking.com"/>
   <ns1:parameter name="sendXsiTypes" value="false"/>
-  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns18:DZPTH" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.otracking.bean.DZPTH" xmlns:ns18="http://bean.otracking.com"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns24:DZPTH" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.otracking.bean.DZPTH" xmlns:ns24="http://bean.otracking.com"/>
  </ns1:service>
  <ns1:service name="GetDeliveryListByDNService" provider="java:RPC" style="wrapped" use="literal">
-  <ns1:operation name="getDeliverylistByDN" qname="ns19:getDeliverylistByDN" returnQName="ns19:getDeliverylistByDNReturn" returnType="xsd:string" soapAction="" xmlns:ns19="http://webservice.otracking.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns19:dn" type="xsd:string"/>
+  <ns1:operation name="getDeliverylistByDN" qname="ns25:getDeliverylistByDN" returnQName="ns25:getDeliverylistByDNReturn" returnType="xsd:string" soapAction="" xmlns:ns25="http://webservice.otracking.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns25:dn" type="xsd:string"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="getDeliverylistByDN"/>
-  <ns1:parameter name="wsdlPortType" value="GetDeliveryListByDNService"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
-  <ns1:parameter name="schemaQualified" value="http://webservice.otracking.com"/>
-  <ns1:parameter name="wsdlServicePort" value="GetDeliveryListByDNService"/>
+  <ns1:parameter name="wsdlPortType" value="GetDeliveryListByDNService"/>
   <ns1:parameter name="className" value="com.otracking.webservice.GetDeliveryListByDNService"/>
+  <ns1:parameter name="wsdlServicePort" value="GetDeliveryListByDNService"/>
+  <ns1:parameter name="schemaQualified" value="http://webservice.otracking.com"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://webservice.otracking.com"/>
   <ns1:parameter name="wsdlServiceElement" value="GetDeliveryListByDNServiceService"/>
  </ns1:service>
  <ns1:service name="LoopLabelService" provider="java:RPC" style="wrapped" use="literal">
-  <ns1:operation name="importBom" qname="ns20:importBom" returnQName="ns20:importBomReturn" returnType="xsd:int" soapAction="" xmlns:ns20="http://webservice.otracking.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns20:mo_name" type="xsd:string"/>
-   <ns1:parameter qname="ns20:authentication" type="xsd:string"/>
+  <ns1:operation name="importBom" qname="ns26:importBom" returnQName="ns26:importBomReturn" returnType="xsd:int" soapAction="" xmlns:ns26="http://webservice.otracking.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns26:mo_name" type="xsd:string"/>
+   <ns1:parameter qname="ns26:authentication" type="xsd:string"/>
   </ns1:operation>
   <ns1:parameter name="sendMultiRefs" value="false"/>
   <ns1:parameter name="wsdlServicePort" value="LoopLabelService"/>
@@ -147,21 +164,21 @@
   <ns1:parameter name="className" value="com.otracking.webservice.LoopLabelService"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="allowedMethods" value="importBom"/>
-  <ns1:parameter name="wsdlTargetNamespace" value="http://webservice.otracking.com"/>
-  <ns1:parameter name="wsdlServiceElement" value="LoopLabelServiceService"/>
   <ns1:parameter name="wsdlPortType" value="LoopLabelService"/>
+  <ns1:parameter name="wsdlServiceElement" value="LoopLabelServiceService"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://webservice.otracking.com"/>
   <ns1:parameter name="sendXsiTypes" value="false"/>
  </ns1:service>
  <ns1:service name="GetMOPackageInfoService" provider="java:RPC" style="wrapped" use="literal">
-  <ns1:operation name="getZXDInfoByMO" qname="ns21:getZXDInfoByMO" returnQName="ns21:getZXDInfoByMOReturn" returnType="xsd:string" soapAction="" xmlns:ns21="http://webservice.otracking.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns21:mo" type="xsd:string"/>
+  <ns1:operation name="getZXDInfoByMO" qname="ns27:getZXDInfoByMO" returnQName="ns27:getZXDInfoByMOReturn" returnType="xsd:string" soapAction="" xmlns:ns27="http://webservice.otracking.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns27:mo" type="xsd:string"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="getZXDInfoByMO"/>
-  <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="GetMOPackageInfoService"/>
-  <ns1:parameter name="className" value="com.otracking.webservice.GetMOPackageInfoService"/>
-  <ns1:parameter name="wsdlServicePort" value="GetMOPackageInfoService"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="schemaQualified" value="http://webservice.otracking.com"/>
+  <ns1:parameter name="wsdlServicePort" value="GetMOPackageInfoService"/>
+  <ns1:parameter name="className" value="com.otracking.webservice.GetMOPackageInfoService"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://webservice.otracking.com"/>
   <ns1:parameter name="wsdlServiceElement" value="GetMOPackageInfoServiceService"/>
  </ns1:service>

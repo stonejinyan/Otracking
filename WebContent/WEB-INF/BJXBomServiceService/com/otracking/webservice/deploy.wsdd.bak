@@ -1,0 +1,53 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from BJXBomServiceService WSDL service -->
+
+  <service name="BJXBomService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webservice.otracking.com"/>
+      <parameter name="wsdlServiceElement" value="BJXBomServiceService"/>
+      <parameter name="schemaQualified" value="http://bean.webservice.otracking.com,http://webservice.otracking.com"/>
+      <parameter name="wsdlServicePort" value="BJXBomService"/>
+      <parameter name="className" value="com.otracking.webservice.BJXBomServiceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="BJXBomService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="importBJXBom" qname="operNS:importBJXBom" xmlns:operNS="http://webservice.otracking.com" returnQName="retNS:importBJXBomReturn" xmlns:retNS="http://webservice.otracking.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:bjxBom" xmlns:pns="http://webservice.otracking.com" type="tns:BJXBom" xmlns:tns="http://bean.webservice.otracking.com"/>
+        <parameter qname="pns:authentication" xmlns:pns="http://webservice.otracking.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="importBJXBom"/>
+
+      <typeMapping
+        xmlns:ns="http://bean.webservice.otracking.com"
+        qname="ns:BJXBom_Material"
+        type="java:com.otracking.webservice.bean.BJXBom_Material"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://webservice.otracking.com"
+        qname="ns:ArrayOf_tns2_BJXBom_Material"
+        type="java:com.otracking.webservice.bean.BJXBom_Material[]"
+        innerType="cmp-ns:BJXBom_Material" xmlns:cmp-ns="http://bean.webservice.otracking.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://bean.webservice.otracking.com"
+        qname="ns:BJXBom"
+        type="java:com.otracking.webservice.bean.BJXBom"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

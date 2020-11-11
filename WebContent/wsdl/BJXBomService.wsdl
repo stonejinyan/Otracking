@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservice.otracking.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservice.otracking.com" xmlns:intf="http://webservice.otracking.com" xmlns:tns2="http://bean.webservice.otracking.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservice.otracking.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://bean.webservice.otracking.com"/>
+   <element name="importBJXBom">
+    <complexType>
+     <sequence>
+      <element name="bjxBom" type="tns2:BJXBom"/>
+      <element name="authentication" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_tns2_BJXBom_Material">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:BJXBom_Material"/>
+    </sequence>
+   </complexType>
+   <element name="importBJXBomResponse">
+    <complexType>
+     <sequence>
+      <element name="importBJXBomReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://bean.webservice.otracking.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://webservice.otracking.com"/>
+   <complexType name="BJXBom_Material">
+    <sequence>
+     <element name="AOP" nillable="true" type="xsd:string"/>
+     <element name="RGEKZ" nillable="true" type="xsd:string"/>
+     <element name="description" nillable="true" type="xsd:string"/>
+     <element name="material" nillable="true" type="xsd:string"/>
+     <element name="panel" nillable="true" type="xsd:string"/>
+     <element name="quantity" type="xsd:double"/>
+    </sequence>
+   </complexType>
+   <complexType name="BJXBom">
+    <sequence>
+     <element name="bjxBom_Materials" nillable="true" type="impl:ArrayOf_tns2_BJXBom_Material"/>
+     <element name="moString" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="importBJXBomRequest">
+
+      <wsdl:part element="impl:importBJXBom" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="importBJXBomResponse">
+
+      <wsdl:part element="impl:importBJXBomResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="BJXBomService">
+
+      <wsdl:operation name="importBJXBom">
+
+         <wsdl:input message="impl:importBJXBomRequest" name="importBJXBomRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:importBJXBomResponse" name="importBJXBomResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="BJXBomServiceSoapBinding" type="impl:BJXBomService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="importBJXBom">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="importBJXBomRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="importBJXBomResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="BJXBomServiceService">
+
+      <wsdl:port binding="impl:BJXBomServiceSoapBinding" name="BJXBomService">
+
+         <wsdlsoap:address location="http://localhost:8888/Otracking/services/BJXBomService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
