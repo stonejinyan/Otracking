@@ -142,4 +142,19 @@ public class MODao extends IBaseDao<MO> {
 		        + "INNER JOIN product_type ON mo.product_type_id = product_type.id\r\n" + "where mo.id = ?";
 		return (int) super.queryForCount(sql, id);
 	}
+
+	public double getReleaseQuantity(int batch_id) {
+		String sql = "select sum(quantity) from mo where batch_id = ? and scheduling = 1";
+		return (int) super.queryForCount(sql, batch_id);
+	}
+
+	public double getFGQuantity(int batch_id) {
+		String sql = "select sum(quantity) from mo where batch_id = ? and actual_endtime is not null";
+		return (int) super.queryForCount(sql, batch_id);
+	}
+
+	public double getPackagesQuantity(int batch_id) {
+		String sql = "select sum(quantity) from mo where batch_id = ? and package_time is not null";
+		return (int) super.queryForCount(sql, batch_id);
+	}
 }

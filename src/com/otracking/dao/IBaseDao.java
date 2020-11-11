@@ -543,7 +543,11 @@ public class IBaseDao<T> {
 
 		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
 		try {
-			return Double.parseDouble(queryRunner.query(sql, new ScalarHandler(1), args).toString());
+			Object object = queryRunner.query(sql, new ScalarHandler(1), args);
+			if (object == null) {
+				return 0;
+			}
+			return Double.parseDouble(object.toString());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			LogUtil.RollingFile.error(e.getMessage());

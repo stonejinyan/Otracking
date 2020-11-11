@@ -19,14 +19,14 @@ public class WIPDao extends IBaseDao<WIP> {
 		return super.queryForCount(sql, methodProcessID);
 	}
 
-	public double getWIPTotal() {
-		String sql = "SELECT Count(*) FROM production_schedule INNER JOIN mo ON production_schedule.mo_id = mo.id INNER JOIN method_process ON production_schedule.method_process_id = method_process.id WHERE mo.actual_endtime IS null AND (production_schedule.flag = 1 OR production_schedule.flag = 2 OR production_schedule.flag = 3 OR production_schedule.flag = 5) AND method_process.id = 67";
-		return super.queryForCount(sql);
+	public double getWIPTotal(int familyID) {
+		String sql = "select SUM(mo.quantity) from mo,batch,seeeorder where mo.batch_id = batch.id and batch.order_id = seeeorder.id and mo.actual_endtime is null and mo.scheduling = 1 and seeeorder.familyID = ?";
+		return super.queryForCount(sql, familyID);
 	}
 
-	public double getAbnormalTotal() {
-		String sql = "select count(*) from production_schedule where flag = 3";
-		return super.queryForCount(sql);
+	public double getAbnormalTotal(int familyID) {
+		String sql = "select count(*) from production_scheduletable where production_status = 3 and familyID =?";
+		return super.queryForCount(sql, familyID);
 	}
 
 	public double getPackageWIP() {

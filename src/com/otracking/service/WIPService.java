@@ -31,7 +31,7 @@ public class WIPService {
 	}
 
 	public double getTotalWIP() {
-		return wipDao.getWIPTotal();
+		return wipDao.getWIPTotal(1);
 	}
 
 	public double getPackageWIP() {

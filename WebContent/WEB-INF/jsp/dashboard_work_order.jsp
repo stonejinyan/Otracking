@@ -156,7 +156,7 @@
 	<script src="js/tableExport/tableExport.js"></script>
 	<script src="js/table-export.js"></script>
 	<script src="js/main.js"></script>
-	<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"
+	<script type="text/javascript" src="js/bootstrap-datetimepicker.js"
 		charset="UTF-8"></script>
 	<script type="text/javascript">
 		var lang = navigator.language || navigator.userLanguage;

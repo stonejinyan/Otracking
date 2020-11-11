@@ -228,7 +228,7 @@
 		<script src="js/macarons.js"></script>
 		<!-- DatePick -->
 		<script type="text/javascript"
-			src="js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+			src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
 		<script type="text/javascript">
 			var dom = document.getElementById("chart1");
 			var myChart1 = echarts.init(dom, 'macarons');

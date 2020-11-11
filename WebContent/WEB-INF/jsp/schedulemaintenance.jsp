@@ -59,6 +59,11 @@
 				<div class="form-inline" herf="">
 					<div class="form-group">
 						<label class="sr-only" for="exampleInputAmount">123</label>
+						<label for="recipient-name" class="control-label">请选择产品家族</label>
+											<select id="familyID" name="order.familyID" class="form-control">
+  												<option value="1">PTEQP</option>
+  												<option value="2">LVD</option>
+												</select>
 						<div class="input-group">
 							<div class="input-group-addon">Target:</div>
 							<input type="text" class="form-control" id="InputTarget"
@@ -101,7 +106,7 @@
 		}
 		function saveTarget(){
 			$.ajax({
-				url : '/Otracking/SaveMonthTarget?target='+$("#InputTarget").val(),
+				url : '/Otracking/SaveMonthTarget?target='+$("#InputTarget").val()+'&familyID='+$("#familyID").val(),
 				type : 'GET',
 				success : function(data) {
 					alert(data);

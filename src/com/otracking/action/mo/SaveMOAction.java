@@ -126,6 +126,7 @@ public class SaveMOAction extends ActionSupport {
 					break;
 				}
 			}
+
 			if (WBS != null && !WBS.equals("")) {
 				Batch batch = getBatchIdByName(batchName, orderID, WBS);
 				if (batch != null) {
@@ -172,8 +173,6 @@ public class SaveMOAction extends ActionSupport {
 					product_classify = "附件箱";
 					mo.setQuantity(0);
 				} else {
-					error = error + moName + ":Panle " + "is no definition;<br>";
-					break;
 				}
 				String myProcesslineName = "";
 				if (processlineName.equals("70")) {
@@ -192,8 +191,21 @@ public class SaveMOAction extends ActionSupport {
 					myProcesslineName = "PTLVS";
 				} else if (processlineName.equals("附件箱")) {
 					myProcesslineName = "附件箱";
-				} else if (processlineName.equals("弹性线")) {
-					myProcesslineName = "弹性线";
+				} else if (processlineName.equals("LVD-FSP")) {
+					myProcesslineName = "LVD-FSP";
+					product_classify = "LVD";
+				} else if (processlineName.equals("LVD-MCE")) {
+					myProcesslineName = "LVD-MCE";
+					product_classify = "LVD";
+				} else if (processlineName.equals("LVD-APLNG")) {
+					myProcesslineName = "LVD-APLNG";
+					product_classify = "LVD";
+				} else if (processlineName.equals("LVD-CREG")) {
+					myProcesslineName = "LVD-CREG";
+					product_classify = "LVD";
+				} else if (processlineName.equals("LVD-VHP")) {
+					myProcesslineName = "LVD-VHP";
+					product_classify = "LVD";
 				} else {
 					error = error + moName + ":processlineName " + "is no definition;<br>";
 					break;
@@ -276,9 +288,9 @@ public class SaveMOAction extends ActionSupport {
 				batch.setActual_endtime(new Date());
 			}
 			System.out.println(orderID);
-			System.out.println(batchName);
+			System.out.println(WBS);
 			batchDao.save(batch);
-			batch = batchDao.queryByname(batchName, orderID);
+			batch = batchDao.queryByname(WBS, orderID);
 		}
 		return batch;
 	}

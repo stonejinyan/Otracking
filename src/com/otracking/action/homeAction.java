@@ -13,10 +13,6 @@ public class homeAction extends ActionSupport {
 	public String execute() throws Exception {
 
 		ActionContext.getContext().getSession().remove("error");
-		ActionContext.getContext().put("TotalWIP", (int) wipDao.getWIPTotal());
-		ActionContext.getContext().put("Abnormal", (int) wipDao.getAbnormalTotal());
-		ActionContext.getContext().put("MFG", (int) outputDao.getMFG());
-		ActionContext.getContext().put("MT", (int) outputDao.getById(4).getOutput_num());
 		ActionContext.getContext().put("active", "home");
 		return "success";
 	}

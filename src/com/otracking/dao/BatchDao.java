@@ -23,6 +23,12 @@ public class BatchDao extends IBaseDao<Batch> {
 		return super.update("update " + tableName + " " + sql, newValue, id);
 	}
 
+	public List<Batch> getCurrentBatch(int familyID) {
+		String sql = "select batch.* from " + tableName
+		        + ",seeeorder where `batch`.`order_id` = `seeeorder`.`id` and seeeorder.familyID = ? and batch.actual_starttime is not null and batch.actual_endtime is null";
+		return super.queryForMultiple(sql, familyID);
+	}
+
 	public List<Batch> getCurrentBatch() {
 		String sql = "select * from " + tableName + " where actual_starttime is not null and actual_endtime is null";
 		return super.queryForMultiple(sql);

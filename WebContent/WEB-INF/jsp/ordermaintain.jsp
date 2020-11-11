@@ -18,8 +18,7 @@
 
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<!-- Loading Flat UI Pro -->
-<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet"
+<link href="css/bootstrap-datetimepicker.css" rel="stylesheet"
 	media="screen">
 
 <link rel="stylesheet" href="css/bootstrap-table.css">
@@ -77,40 +76,37 @@
 											<input type="text" class="form-control" id="recipient-name"
 												name="order.name">
 										</div>
-
+										<div class="form-group">
+											<label for="recipient-name" class="control-label">请输入SO</label>
+											<input type="text" class="form-control" id="recipient-name"
+												name="order.SO">
+										</div>
+										<div class="form-group">
+											<label for="recipient-name" class="control-label">请选择产品家族</label>
+											<select name="order.familyID" class="form-control">
+  												<option value="1">PTEQP</option>
+  												<option value="2">LVD</option>
+												</select>
+										</div>
 										<div class="form-group">
 											<label for="recipient-name" class="control-label">请输入订单开始时间</label>
-											<div class="input-group date form_date col-xs-12"
-												data-date="" data-date-format="dd MM yyyy"
-												data-link-field="dtp_input1" data-link-format="yyyy-mm-dd">
-												<input name="order.schedule_starttime" class="form-control"
-													size="16" type="text" value="" readonly> <span
-													class="input-group-addon"><span
-													class="glyphicon glyphicon-remove"></span></span> <span
-													class="input-group-addon"><span
-													class="glyphicon glyphicon-calendar"></span></span><span
-													class="input-group-addon label-success"><font
-													style="color: #FFFFFF">选填:默认今天</font></span>
-											</div>
-											<input type="hidden" id="dtp_input1" value="" />
-
+											<div class='input-group date' id='datetimepicker1'>
+											<input name="order.schedule_starttime" type='text' class="form-control" />
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-calendar"></span>
+											</span>
 										</div>
-
+										</div>
+										
 										<div class="form-group">
 											<label for="recipient-name" class="control-label">请输入订单预计结束时间</label>
-											<div class="input-group date form_date col-xs-12"
-												data-date="" data-date-format="dd MM yyyy"
-												data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-												<input name="order.schedule_endtime" class="form-control"
-													size="16" type="text" value="" readonly> <span
-													class="input-group-addon"><span
-													class="glyphicon glyphicon-remove"></span></span> <span
-													class="input-group-addon"><span
-													class="glyphicon glyphicon-calendar"></span></span><span
-													class="input-group-addon label-success"><font
-													style="color: #FFFFFF">选填:可以为空</font></span>
-											</div>
-											<input type="hidden" id="dtp_input2" value="" />
+											
+											<div class='input-group date' id='datetimepicker2'>
+											<input name="order.schedule_endtime" type='text' class="form-control" />
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-calendar"></span>
+											</span>
+										</div>
 										</div>
 									</div>
 									<div class="modal-footer">
@@ -141,33 +137,23 @@
 				|| document.write('<script src="js/jquery.min.js"><\/script>')
 	</script>
 	<script src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"
-		charset="UTF-8"></script>
-	<script type="text/javascript"
-		src="js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+	<script src="js/moment-with-locales.js"></script>
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
 	<script src="js/bootstrap-editable.js"></script>
 	<script src="js/bootstrap-table.js"></script>
 	<script src="js/bootstrap-table-locale-all.min.js"></script>
 	<script src="js/bootstrap-table-editable.js"></script>
-	<script src="js/combodate.js"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script type="text/javascript">
 		var lang = navigator.language || navigator.userLanguage;
-		$('.form_date').datetimepicker({
-			language : 'zh-CN',
-			format : 'yyyy-mm-dd',//显示格式
-			minView : "month",//设置只显示到月份
-			initialDate : new Date(),//初始化当前日期
-			setDate : new Date(),//初始化当前日期
-			autoclose : true,//选中自动关闭
-			todayBtn : true,//显示今日按钮
-			weekStart : 1,
-			todayBtn : 1,
-			autoclose : 1,
-			todayHighlight : 1,
-			startView : 2,
-			minView : 2,
-			forceParse : 0
+
+		$('#datetimepicker1').datetimepicker({
+			format: 'YYYY-MM-DD',
+			locale: moment().locale('zh-cn')
+		});
+		$('#datetimepicker2').datetimepicker({
+			format: 'YYYY-MM-DD',
+			locale: moment().locale('zh-cn')
 		});
 		var $table = $('#table'), $button = $('#btn_edit');
 		$(function() {
@@ -235,6 +221,16 @@
 				field : 'SO',
 				title : 'SO',
 				editable : true,
+			}, {
+				field : 'familyID',
+				title : 'Family',
+				formatter: function(value, row, index) {
+					if(value==1){
+						return "PTEQP";
+					}else if(value==2){
+						return "LVD";
+					}
+				}
 			}, {
 				field : 'schedule_starttime',
 				title : '订单开始时间',

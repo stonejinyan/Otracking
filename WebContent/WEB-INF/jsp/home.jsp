@@ -19,6 +19,7 @@
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/home.css" rel="stylesheet">
+<link href="css/bootstrap-switch.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/bootstrap-table.css">
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -85,23 +86,23 @@
 				<div class="row">
 					<div class="col-xs-10" style="padding-left: 0px">
 						<h3>
-							<span class="label label-success">订单状态</span>
+							<span class="label label-success">订单状态</span> 	<input style="margin-top: 0px;" name="status" type="checkbox"  checked>
 						</h3>
 					</div>
 					<div class="col-xs-1">
 						<h4>
-							<span class="label label-info">Target ：${MT }</span>
+							<span class="label label-info">Target ：<span id="target"></span></span>
 						</h4>
 						<h4>
-							<span class="label label-warning"> W I P：${TotalWIP} </span>
+							<span class="label label-warning"> W I P：<span id="wip"></span> </span>
 						</h4>
 					</div>
 					<div class="col-xs-1" style="padding-right: 0px">
 						<h4>
-							<span class="label label-success">F G ：${MFG } </span>
+							<span class="label label-success">F G ：<span id="finishGoods"></span> </span>
 						</h4>
 						<h4>
-							<span class="label label-danger">Abnor ：${Abnormal} </span>
+							<span class="label label-danger">Abnor ：<span id="abnormal"></span> </span>
 						</h4>
 					</div>
 					<%-- <div class="col-xs-5" id=""><br>
@@ -165,9 +166,50 @@
 	<script src="js/tableExport/tableExport.js"></script>
 	<script src="js/table-export.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/bootstrap-switch.min.js"></script>
 	<script type="text/javascript">
 	var lang = navigator.language || navigator.userLanguage;
 		var $table = $('#table'), $button = $('#btn_edit');
+		
+		//设置KPI
+		function setKPI(familyID){
+			$.ajax({
+				type : "get",
+				url : "GetKPIAction",
+				data : {
+					"familyID" : familyID,
+				},
+				success : function(data, status) {
+					$('#target').html(data.target);
+					$('#wip').html(data.wip);
+					$('#finishGoods').html(data.finishGoods);
+					$('#abnormal').html(data.abnormal);
+					}
+			});
+		}
+        // 开关
+		 $('[name="status"]').bootstrapSwitch({    //初始化按钮
+		       onText:"PTEQP",
+		       offText:"LVD",
+		       onColor:"success",
+		       offColor:"success",
+		       size:"noraml",
+		       labelWidth:1,
+		       handleWidth:30,
+		       onSwitchChange:function(event,state){
+		          if(state==true){
+		        	  console.log("PTEQP");
+		        	  setKPI(1);
+		        	  tableConfig.url = url + "1";
+					  $('#table').bootstrapTable('refresh',tableConfig);
+		             }else{
+		            	console.log("LVD");
+		            	setKPI(2);
+		            	tableConfig.url = url + "2";
+		 				$('#table').bootstrapTable('refresh',tableConfig);
+		             }
+		         }
+		    });
 		
 		//初始化子表格(无线循环)
 	    InitSubTable1 = function (index, row, $detail) {
@@ -381,7 +423,7 @@
 		var oTableInit;
 
 		var tableConfig = {
-			url : '/Otracking/GetBatchStatus', //请求后台的URL（*）
+			url : '/Otracking/GetBatchStatus?familyID=', //请求后台的URL（*）
 			method : 'get', //请求方式（*）
 			contentType : "application/x-www-form-urlencoded",//必须要有！！！！
 			toolbar : '#toolbar', //工具按钮用哪个容器
@@ -452,18 +494,39 @@
 				title : 'FAT日期',
 				align : 'center',
 				valign : 'middle',
-				width : '120px',
+				width : '100px',
 			},{
 				field : 'DeliveryTime',
 				title : '交货日期',
 				editable : true,
 				align : 'center',
 				valign : 'middle',
-				sortable : true,
-				width : '120px',
+					sortable : true,
+					width : '100px',
 			}, {
 				field : 'quantity',
 				title : '数量',
+				editable : true,
+				align : 'center',
+				valign : 'middle',
+				width : '50px',
+			}, {
+				field : 'releaseQuantity',
+				title : '排产',
+				editable : true,
+				align : 'center',
+				valign : 'middle',
+				width : '50px',
+			}, {
+				field : 'finishGoodsQuantity',
+				title : '挂单',
+				editable : true,
+				align : 'center',
+				valign : 'middle',
+				width : '50px',
+			}, {
+				field : 'packageQuantity',
+				title : '包装',
 				editable : true,
 				align : 'center',
 				valign : 'middle',
@@ -528,7 +591,7 @@
 				align : 'left',
 				halign : "center",
 				valign : 'middle',
-				width : '150px',
+				width : '100px',
 			} ],
 			onEditableSave : function(field, row, oldValue, $el) {
 				$.ajax({
@@ -567,6 +630,9 @@
 			var oTableInit = new Object();
 			//初始化Table
 			oTableInit.Init = function() {
+				setKPI(1);
+				url = "/Otracking/GetBatchStatus?familyID=";
+				tableConfig.url = url + "1";
 				$('#table').bootstrapTable(tableConfig);
 			};
 			return oTableInit;

@@ -24,6 +24,7 @@ public class GetBatchStatusAction extends ActionSupport {
 	private int limit;
 	private int offset;
 	private String order;
+	private int familyID;
 	Production_ScheduleDao production_ScheduleDao = new Production_ScheduleDao();
 	OrderDao orderDao = new OrderDao();
 	BatchDao batchDao = new BatchDao();
@@ -41,7 +42,7 @@ public class GetBatchStatusAction extends ActionSupport {
 	public String execute() throws Exception {
 		List<BatchStatus> batchStatuss = new ArrayList<BatchStatus>();
 		// ServerPagination serverPagination = new ServerPagination();
-		List<Batch> batchs = batchDao.getCurrentBatch();
+		List<Batch> batchs = batchDao.getCurrentBatch(familyID);
 		for (int i = 0; i < batchs.size(); i++) {
 			Batch batch = batchs.get(i);
 			BatchStatus batchStatus = new BatchStatus();
@@ -71,6 +72,9 @@ public class GetBatchStatusAction extends ActionSupport {
 			        production_ScheduleDao.getProduction_ScheduleByBatchAndMethod_Process_Type(batch.getId(), 7)));
 			batchStatus.setFAT(checkStatus(
 			        production_ScheduleDao.getProduction_ScheduleByBatchAndMethod_Process_Type(batch.getId(), 8)));
+			batchStatus.setReleaseQuantity((int) moDao.getReleaseQuantity(batch.getId()));
+			batchStatus.setFinishGoodsQuantity((int) moDao.getFGQuantity(batch.getId()));
+			batchStatus.setPackageQuantity((int) moDao.getPackagesQuantity(batch.getId()));
 			batchStatuss.add(batchStatus);
 		}
 		/*
@@ -162,6 +166,14 @@ public class GetBatchStatusAction extends ActionSupport {
 
 	public void setOrder(String order) {
 		this.order = order;
+	}
+
+	public int getFamilyID() {
+		return familyID;
+	}
+
+	public void setFamilyID(int familyID) {
+		this.familyID = familyID;
 	}
 
 }

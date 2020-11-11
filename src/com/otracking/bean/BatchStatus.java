@@ -21,6 +21,33 @@ public class BatchStatus {
 	private String comments;
 	private Date DeliveryTime;
 	private Date fatTime;
+	private int releaseQuantity;
+	private int finishGoodsQuantity;
+	private int packageQuantity;
+
+	public int getFinishGoodsQuantity() {
+		return finishGoodsQuantity;
+	}
+
+	public void setFinishGoodsQuantity(int finishGoodsQuantity) {
+		this.finishGoodsQuantity = finishGoodsQuantity;
+	}
+
+	public int getPackageQuantity() {
+		return packageQuantity;
+	}
+
+	public void setPackageQuantity(int packageQuantity) {
+		this.packageQuantity = packageQuantity;
+	}
+
+	public int getReleaseQuantity() {
+		return releaseQuantity;
+	}
+
+	public void setReleaseQuantity(int releaseQuantity) {
+		this.releaseQuantity = releaseQuantity;
+	}
 
 	public Date getFatTime() {
 		return fatTime;

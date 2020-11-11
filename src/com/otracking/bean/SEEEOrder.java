@@ -12,9 +12,18 @@ public class SEEEOrder {
 	private Date actual_endtime;
 	private String SO;
 	private int pm_id;
+	private int familyID;
 
 	public int getPm_id() {
 		return pm_id;
+	}
+
+	public int getFamilyID() {
+		return familyID;
+	}
+
+	public void setFamilyID(int familyID) {
+		this.familyID = familyID;
 	}
 
 	public void setPm_id(int pm_id) {
